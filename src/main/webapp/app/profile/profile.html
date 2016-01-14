@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Account Summary</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Bank</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="#account of accountService.accounts">
+            <td><img [src]="getLogo(account.bank)" style="max-width:150px; max-height:50px"/></td>
+            <td>{{account.name}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <button (click)="editingAccount = !editingAccount" *ngIf="!editingAccount">Add account</button>
+    <button (click)="editingAccount = !editingAccount" *ngIf="editingAccount">Cancel</button>
+    <account-form *ngIf="editingAccount" (submitted)="accountCreated()"></account-form>
+</div>

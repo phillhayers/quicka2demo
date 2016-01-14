@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Account Form</h1>
+    <form #accountForm="ngForm" (submit)="submit(accountForm.value)">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="model.name" ngControl="name" required>
+        </div>
+        <div class="form-group">
+            <label for="bank">Bank</label>
+            <select class="form-control" [(ngModel)]="model.bank.bankId" ngControl="bank" required>
+                <option *ngFor="#p of banks" [value]="p.bankId">{{p.name}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default"
+                [disabled]="!accountForm.form.valid">Submit</button>
+    </form>
+</div>
