@@ -1,15 +1,13 @@
-import {Account}    from '../models/account';
-import {AccountService} from '../services/account-service';
-import {Bank} from '../models/bank'
-import {BankService} from '../services/bank-service';
-import {Component, EventEmitter, Output} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
+import {Account} from "../../../models/account";
+import {AccountService} from "../../../services/account-service";
+import {Bank} from "../../../models/bank";
+import {BankService} from "../../../services/bank-service";
+import {Component} from "angular2/core";
 @Component({
     selector: 'account-form',
-    templateUrl: 'app/account/account-form.component.html'
+    templateUrl: 'app/components/account/account-form/account-form.component.html'
 })
 export class AccountFormComponent {
-    @Output() submitted = new EventEmitter();
     public banks:Bank[];
     public model:Account;
     private accountService:AccountService;
@@ -20,6 +18,10 @@ export class AccountFormComponent {
         this.accountService = accountService;
         this.bankService = bankService;
         this.getBanks();
+        this.initialiseAccount();
+    }
+
+    private initialiseAccount():void {
         this.model = new Account();
         this.model.bank = new Bank();
     }
@@ -31,6 +33,9 @@ export class AccountFormComponent {
 
     public submit():void {
         this.accountService.save(this.model)
-            .subscribe(() => {this.accountService.getAll(); this.submitted.emit({});});
+            .subscribe(() => {
+                this.accountService.getAll();
+                this.initialiseAccount();
+            });
     }
 }

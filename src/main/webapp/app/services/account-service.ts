@@ -2,7 +2,6 @@ import {Account} from '../models/account';
 import {Http, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs';
-import {ValuesPipe} from '../models/pipes';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -41,6 +40,7 @@ export class AccountService {
     }
 
     public save(account:Account):Observable<Account> {
+        console.log('saving account');
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('http://localhost:8080/accounts', JSON.stringify(account), {headers: headers})

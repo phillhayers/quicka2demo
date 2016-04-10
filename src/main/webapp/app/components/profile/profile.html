@@ -5,16 +5,21 @@
         <tr>
             <th>Bank</th>
             <th>Name</th>
+            <th>Balance</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="#account of accountService.accounts">
+        <tr *ngFor="#account of accountService.accounts" (click)="loggeroo('bong')">
             <td><img [src]="getLogo(account.bank)" style="max-width:150px; max-height:50px"/></td>
             <td>{{account.name}}</td>
+            <td>{{account.balance |currency:'GBP':true}}</td>
         </tr>
         </tbody>
     </table>
-    <button (click)="editingAccount = !editingAccount" *ngIf="!editingAccount">Add account</button>
-    <button (click)="editingAccount = !editingAccount" *ngIf="editingAccount">Cancel</button>
-    <account-form *ngIf="editingAccount" (submitted)="accountCreated()"></account-form>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#accountModal">
+        Add account
+    </button>
+    <!--Account edit modal-->
+    <account-form></account-form>
+
 </div>

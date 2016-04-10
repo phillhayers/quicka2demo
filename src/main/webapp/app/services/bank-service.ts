@@ -2,7 +2,6 @@ import {Bank} from '../models/bank';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs';
-import {ValuesPipe} from '../models/pipes';
 import 'rxjs/Rx';
 
 @Injectable()

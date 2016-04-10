@@ -24,9 +24,6 @@ public class Transaction
     @Column
     private Double out;
 
-    @Column
-    private Double balance;
-
     @ManyToOne(targetEntity = Account.class)
     @JsonIgnore
     private Account account;
@@ -92,16 +89,5 @@ public class Transaction
     public void setDescription(String description)
     {
         this.description = description;
-    }
-
-    public Double getBalance()
-    {
-
-        return balance;
-    }
-
-    public void setBalance(Double balance)
-    {
-        this.balance = balance;
     }
 }

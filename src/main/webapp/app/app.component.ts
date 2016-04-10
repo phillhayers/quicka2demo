@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {ProfileComponent} from './profile/profile.component';
+import {ProfileComponent} from './components/profile/profile.component';
 
 @Component({
     selector: 'my-app',
@@ -7,6 +7,6 @@ import {ProfileComponent} from './profile/profile.component';
     <profile></profile>
     `,
     directives: [ProfileComponent]
-    
+
 })
 export class AppComponent { }

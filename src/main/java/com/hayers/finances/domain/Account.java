@@ -24,6 +24,9 @@ public class Account
     @NotNull
     private String name;
 
+    @Column(name = "BALANCE")
+    private Double balance;
+
     @Column
     @JsonIgnore
     private boolean active = true;
@@ -66,5 +69,15 @@ public class Account
     public void setBank(Bank bank)
     {
         this.bank = bank;
+    }
+
+    public Double getBalance()
+    {
+        return balance;
+    }
+
+    public void setBalance(Double balance)
+    {
+        this.balance = balance;
     }
 }

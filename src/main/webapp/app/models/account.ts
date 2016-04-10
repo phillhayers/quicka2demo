@@ -1,8 +1,9 @@
-import {Bank} from '../models/bank';
+import {Bank} from './bank';
 
 export class Account {
   // http: Http;
   public name: String;
+  public balance: Number;
   public bank: Bank;
   public editable: Boolean;
 
